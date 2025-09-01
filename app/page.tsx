@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChartBarIcon, SparklesIcon, TrendingUpIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { ChartBarIcon, SparklesIcon, ArrowTrendingUpIcon, ClockIcon } from '@heroicons/react/24/outline'
 import StockList from './components/StockList'
 import MarketOverview from './components/MarketOverview'
 import StrategyCards from './components/StrategyCards'
@@ -68,7 +68,7 @@ export default function HomePage() {
               {/* 系统特色 */}
               <div className="card">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                  <TrendingUpIcon className="w-5 h-5 text-blue-500 mr-2" />
+                  <ArrowTrendingUpIcon className="w-5 h-5 text-blue-500 mr-2" />
                   系统特色
                 </h3>
                 <div className="space-y-3">
