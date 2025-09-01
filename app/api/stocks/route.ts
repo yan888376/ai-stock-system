@@ -146,12 +146,12 @@ function generateMockStockData(codes: string[]): StockData[] {
 
 // 春天选股法分析算法（简化版）
 function analyzeSpringStocks(stockData: StockData[]): SpringAnalysisResult[] {
-  return stockData
+  const results = stockData
     .map(stock => {
       // 简化的春天识别算法
-      const isSpring = analyzeSpringConditions(stock)
+      const analysis = analyzeSpringConditions(stock)
       
-      if (!isSpring.isSpring) return null
+      if (!analysis.isSpring) return null
       
       const score = calculateSpringScore(stock)
       const recommendation = getRecommendation(score)
@@ -164,17 +164,19 @@ function analyzeSpringStocks(stockData: StockData[]): SpringAnalysisResult[] {
         change: stock.change,
         changePercent: stock.changePercent,
         season: 'spring' as const,
-        pattern: isSpring.pattern,
+        pattern: analysis.pattern,
         score: score,
         recommendation: recommendation,
         targetPrice: targetPrice,
         riskLevel: getRiskLevel(score),
         holdingPeriod: '2-7年',
-        reason: generateReason(stock, isSpring, score)
+        reason: generateReason(stock, analysis, score)
       }
     })
     .filter((stock): stock is SpringAnalysisResult => stock !== null)
     .sort((a, b) => b.score - a.score) // 按评分排序
+  
+  return results
 }
 
 // 分析春天条件

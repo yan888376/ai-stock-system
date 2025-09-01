@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ArrowTrendingUpIcon, ArrowTrendingDownIcon, ChartBarIcon } from '@heroicons/react/24/outline'
+import { ArrowUpIcon, ArrowDownIcon, ChartBarIcon } from '@heroicons/react/24/outline'
 
 interface MarketData {
   index: string
@@ -119,9 +119,9 @@ export default function MarketOverview({ isLoading }: MarketOverviewProps) {
                 item.change >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 {item.change >= 0 ? (
-                  <ArrowTrendingUpIcon className="w-3 h-3 mr-1" />
+                  <ArrowUpIcon className="w-3 h-3 mr-1" />
                 ) : (
-                  <ArrowTrendingDownIcon className="w-3 h-3 mr-1" />
+                  <ArrowDownIcon className="w-3 h-3 mr-1" />
                 )}
                 <span>
                   {item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}
